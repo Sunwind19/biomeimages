@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT 영단어 학습기</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>SAT 영단어 학습기</h1>
+  <div class="apikey-box">
+    <label for="apiKeyInput">Claude API 키</label>
+    <input type="password" id="apiKeyInput" placeholder="sk-ant-...">
+    <button id="saveApiKeyBtn">저장</button>
+    <span id="apiKeyStatus"></span>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="tab1">1. 단어 입력</button>
+  <button class="tab-btn" data-tab="tab2">2. 단어 카드 생성</button>
+  <button class="tab-btn" data-tab="tab3">3. 퀴즈</button>
+  <button class="tab-btn" data-tab="tab4">4. 단어 세트 보기</button>
+</nav>
+
+<main>
+  <!-- Tab 1: 단어 입력 -->
+  <section id="tab1" class="tab-panel active">
+    <h2>날짜별 단어 입력</h2>
+    <div class="row">
+      <label for="dateInput">날짜</label>
+      <input type="date" id="dateInput">
+    </div>
+    <div class="row">
+      <label for="wordInput">단어</label>
+      <input type="text" id="wordInput" placeholder="예: ephemeral">
+      <button id="addWordBtn">추가</button>
+    </div>
+    <h3>이 날짜의 단어 목록</h3>
+    <ul id="currentWordList" class="word-list"></ul>
+  </section>
+
+  <!-- Tab 2: 단어 카드 생성 -->
+  <section id="tab2" class="tab-panel">
+    <h2>단어 카드 생성 (예문 · 뜻 · 감정 분석)</h2>
+    <div class="row">
+      <label for="cardWordInput">단어</label>
+      <input type="text" id="cardWordInput" placeholder="예: ephemeral">
+      <button id="generateCardBtn">카드 생성</button>
+    </div>
+    <div id="cardResult" class="card-result"></div>
+  </section>
+
+  <!-- Tab 3: 퀴즈 -->
+  <section id="tab3" class="tab-panel">
+    <h2>퀴즈</h2>
+    <div class="row">
+      <label for="quizDateSelect">단어 세트 (날짜)</label>
+      <select id="quizDateSelect"></select>
+    </div>
+    <div class="row">
+      <label for="quizModeSelect">퀴즈 모드</label>
+      <select id="quizModeSelect">
+        <option value="meaning">A. 단어 뜻 맞추기</option>
+        <option value="sentiment">B. 단어의 긍정/부정/중립 맞추기</option>
+        <option value="cloze">C. 문장 빈칸 채우기</option>
+      </select>
+    </div>
+    <button id="startQuizBtn">퀴즈 생성</button>
+    <div id="quizArea" class="quiz-area"></div>
+  </section>
+
+  <!-- Tab 4: 단어 세트 보기 -->
+  <section id="tab4" class="tab-panel">
+    <h2>날짜별 단어 세트</h2>
+    <div id="wordSetsView"></div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
